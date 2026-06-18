@@ -18,12 +18,15 @@ const CreateWorkspace = (props: Props) => {
          }|null
         }
       }
-
+if (plan?.subscription?.plan === 'free'){
+  return <></>
+}
+if(plan?.subscription?.plan === 'pro'){
 return(
 <Modal title="Create a workspace" description="Create a new workspace for your team." trigger={<button> <FolderPlusDuotone /> Create Workspace </button>}> <Workspaceform/></Modal>
 
 )
-  
+}
 
  
 }
