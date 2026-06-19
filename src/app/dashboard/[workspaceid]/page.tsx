@@ -5,10 +5,11 @@ import React from 'react'
 import Folders from '@/components/global/folders'
 
 type Props = {
-  params:{ workspaceId: string}
+  params: Promise<{ workspaceId: string }>
 }
 
-const page = ({params}: Props) => {
+const page = async ({ params }: Props) => {
+  const { workspaceId } = await params
   return (
     <div>
       <Tabs defaultValue='Videos' className='mt-6'>
@@ -19,12 +20,12 @@ const page = ({params}: Props) => {
           </TabsList>
           <div className='flex gap-x-3'>
             <CreateWorkspace/>
-            <CreateFolders workspaceId={params.workspaceId}/>
+            <CreateFolders workspaceId={workspaceId}/>
           </div>
         </div>
         <section className='py-9'>
           <TabsContent value='Videos'> 
-            <Folders workspaceId={params.workspaceId}/>
+            <Folders workspaceId={workspaceId}/>
           </TabsContent>
         </section>
       </Tabs>
