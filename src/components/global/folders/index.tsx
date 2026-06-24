@@ -2,6 +2,7 @@ import React from 'react'
 import FolderDuotone from '@/components/Icons/folder-duotone'
 import { ArrowRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import Folder from './folder'
 
 type Props = {
     workspaceId: string
@@ -23,7 +24,7 @@ const folders = (props: Props) => {
             </div>
         </div>
         <section className={cn('flex items-center gap-4 overflow-x-auto w-full')}>
-            <folder />
+            <Folder name='Folder Title' />
         </section>
     </div>
   )
