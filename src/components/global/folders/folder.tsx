@@ -1,7 +1,7 @@
 'use client'
 import { cn } from '@/lib/utils'
 import { usePathname, useRouter } from 'next/navigation'
-import React from 'react'
+import React, { useRef, useState } from 'react'
 import Loader from '../loader'
 import FolderDuotone from '@/components/Icons/folder-duotone'
 
@@ -15,10 +15,21 @@ type Props = {
 const Folder = ({id, name, optimistic, count}: Props) => {
   const pathName = usePathname()
   const router = useRouter();
+  const [onRename, setOnRename] = useState(false)
+  const inputRef = useRef<HTMLInputElement>(null)
 
+
+
+  const handleFolderclick= ()=>{
+    router.push(`${pathName}/folder/${id}`)
+  }
+  const handleNameDoubleclick = (e: React.MouseEvent<HTMLParagraphElement>)=>{
+    e.stopPropagation()
+    //rename functionality
+  }
   //add loading states 
     return (
-    <div onClick={()=>console.log('running')} className={cn("flex hover:bg-neutral-800 cursor-pointer transition duration-150 items-center gap-2 justify-between min-w-62.5 py-4 px-4 rounded-lg border")}>
+    <div onClick={handleFolderclick} className={cn("flex hover:bg-neutral-800 cursor-pointer transition duration-150 items-center gap-2 justify-between min-w-62.5 py-4 px-4 rounded-lg border")}>
       <Loader state={false} >
         <div className='flex flex-col gap-1'>
           <p onClick={()=>{console.log('redirect')}} onDoubleClick={(e)=>{console.log("fired")}} className='text-[#BDBDBD] '>{name}</p>
