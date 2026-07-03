@@ -182,3 +182,17 @@ export const CreateWorkspace = async (name:string)=> {
     return { status: 400, data:"an error occurred while creating workspace" }
   }
 }
+
+
+export const renameFolder = async (folderId:string, newName:string) => {
+    try {
+        const folder = await db.folder.update({
+            where: { id: folderId },
+            data: { name: newName }
+        })
+        if (folder) return { status: 200, data: "folder renamed" }
+        return { status: 404,data:"folder not found" }
+    }catch (error) {
+        return { status: 400, data: "an error occurred while renaming folder" }
+    }
+}
