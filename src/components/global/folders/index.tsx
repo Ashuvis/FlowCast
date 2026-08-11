@@ -26,8 +26,8 @@ const folders = (props: Props) => {
         <section className={cn('flex items-center gap-4 overflow-x-auto w-full')}>
             <Folder name='Folder Title' />
         </section>
-    </div>
-  )
+    </div>)
+  
 }
 
 export default folders

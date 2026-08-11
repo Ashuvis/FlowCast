@@ -20,12 +20,12 @@ const page = async ({ params }: Props) => {
           </TabsList>
           <div className='flex gap-x-3'>
             <CreateWorkspace/>
-            <CreateFolders workspaceId={workspaceId}/>
+            <CreateFolders workspaceId={params.workspaceId  }/>
           </div>
         </div>
         <section className='py-9'>
           <TabsContent value='Videos'> 
-            <Folders workspaceId={workspaceId}/>
+            <Folders workspaceId={(await params).workspaceId}/>
           </TabsContent>
         </section>
       </Tabs>
